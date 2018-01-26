@@ -28,7 +28,3 @@ function fish_prompt --description 'Write out the prompt'
 		printf '> '
 	end
 end
-
-function !!
-	eval $history[1]
-end
