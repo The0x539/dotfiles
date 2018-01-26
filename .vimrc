@@ -13,3 +13,13 @@ set showcmd
 set list listchars=tab:\ \ 
 highlight OnlyTabs ctermbg=0
 match OnlyTabs /\t/
+
+"The internet told me to turn off modelines
+set modelines=0
+set nomodeline
+
+"Allow backspacing over autoindent, line breaks and start of insert action
+set backspace=indent,eol,start
+
+" Display line numbers on the left
+set number
