@@ -21,5 +21,10 @@ set nomodeline
 "Allow backspacing over autoindent, line breaks and start of insert action
 set backspace=indent,eol,start
 
-" Display line numbers on the left
+"Display line numbers on the left
 set number
+
+"Mouse support
+if has('mouse')
+	set mouse=a
+endif
