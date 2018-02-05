@@ -1,2 +1,9 @@
+# oh-my-fish/plugin-bang-bang
 bind ! __history_previous_command
 bind '$' __history_previous_command_arguments
+
+# externl/fish-symnav
+set -l symnav_bind_mode default
+bind -M $symnav_bind_mode \t __symnav_complete
+bind -M $symnav_bind_mode \r __symnav_execute
+bind -M $symnav_bind_mode \n __symnav_execute
