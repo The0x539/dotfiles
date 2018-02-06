@@ -22,18 +22,18 @@ function __symnav_replace_current_token --argument new_token
     # we need to escape any spaces (assuming they're not already escaped)
     set -l escaped_token (string replace --all --regex -- '(?<!\\\\)\s' '\\\\\\\\ ' "$new_token")
     if not string match --quiet -- "*$token" "$before_at_cursor"
-        set -l token_array (string split -- '' "$token")
-        set -l test_commandline $before_at_cursor
-        set -l test_append_chars
-        while not string match --quiet -- "*$token" "$test_commandline"; and test (count $token_array) -gt 0
-            set -l char $token_array[-1]
-            set -e token_array[-1]
-            set test_append_chars "$char$test_append_chars"
-            set test_commandline "$before_at_cursor$test_append_chars"
-        end
-        set commandline_at_cursor_with_token $test_commandline
+	set -l token_array (string split -- '' "$token")
+	set -l test_commandline $before_at_cursor
+	set -l test_append_chars
+	while not string match --quiet -- "*$token" "$test_commandline"; and test (count $token_array) -gt 0
+	    set -l char $token_array[-1]
+	    set -e token_array[-1]
+	    set test_append_chars "$char$test_append_chars"
+	    set test_commandline "$before_at_cursor$test_append_chars"
+	end
+	set commandline_at_cursor_with_token $test_commandline
     else
-        set commandline_at_cursor_with_token $before_at_cursor
+	set commandline_at_cursor_with_token $before_at_cursor
     end
 
     # The new command line be "the_left", then the "escaped_token", followed by possibly if not empty "the_right"

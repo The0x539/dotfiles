@@ -18,15 +18,15 @@ function __symnav_complete
 
     if test -n "$relative_path"
     and __symnav_is_absolute $relative_path
-        set -l before_buffer (commandline --current-buffer)
+	set -l before_buffer (commandline --current-buffer)
 
-        __symnav_replace_current_token (__symnav_get_substitution "$current_token")
+	__symnav_replace_current_token (__symnav_get_substitution "$current_token")
 
-        # If we've modified the command line then don't perform "a second" completion unless
-        # symnav_execute_substitution is set
-        test $symnav_execute_substitution -eq 0
-        and test $before_buffer != (commandline --current-buffer)
-        and return
+	# If we've modified the command line then don't perform "a second" completion unless
+	# symnav_execute_substitution is set
+	test $symnav_execute_substitution -eq 0
+	and test $before_buffer != (commandline --current-buffer)
+	and return
     end
 
     commandline -f complete

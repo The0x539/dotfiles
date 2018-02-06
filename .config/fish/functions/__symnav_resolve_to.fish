@@ -15,15 +15,15 @@ function __symnav_resolve_to --argument path
 
     set -l resolved_path
     for component in $path_list
-        if test -z "$component"
-            set resolved_path $resolved_path ""
-        else if test $component = ".."
-            set -e resolved_path[-1]
-        else if test $component = "."
-            continue # skip this component
-        else
-            set resolved_path $resolved_path "$component"
-        end
+	if test -z "$component"
+	    set resolved_path $resolved_path ""
+	else if test $component = ".."
+	    set -e resolved_path[-1]
+	else if test $component = "."
+	    continue # skip this component
+	else
+	    set resolved_path $resolved_path "$component"
+	end
     end
 
     __symnav_join_path $resolved_path

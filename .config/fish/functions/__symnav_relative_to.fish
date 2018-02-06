@@ -16,21 +16,21 @@ function __symnav_relative_to --argument path
     set -l symlink_detected 0
     set -l resolved_path
     for component in $path_list
-        if test -z "$component"
-            set resolved_path $resolved_path ""
-        else if test $component = ".."
-            test -L (__symnav_join_path $resolved_path)
-            and set symlink_detected 1
-            set -e resolved_path[-1]
-        else
-            set resolved_path $resolved_path "$component"
-        end
+	if test -z "$component"
+	    set resolved_path $resolved_path ""
+	else if test $component = ".."
+	    test -L (__symnav_join_path $resolved_path)
+	    and set symlink_detected 1
+	    set -e resolved_path[-1]
+	else
+	    set resolved_path $resolved_path "$component"
+	end
     end
 
     if test $symlink_detected -eq 1
-        __symnav_join_path $resolved_path
+	__symnav_join_path $resolved_path
     else
-        printf '%s' $to_dir
+	printf '%s' $to_dir
     end
 end
 

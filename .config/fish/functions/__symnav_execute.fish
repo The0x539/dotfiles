@@ -12,7 +12,7 @@ function __symnav_execute
     __symnav_parse_commandline
 
     if test $symnav_substitute_PWD -eq 1
-        commandline --replace (string replace --all '$PWD' '$symnav_pwd' (commandline --current-buffer))
+	commandline --replace (string replace --all '$PWD' '$symnav_pwd' (commandline --current-buffer))
     end
 
     test $symnav_execute_substitution -eq 0
