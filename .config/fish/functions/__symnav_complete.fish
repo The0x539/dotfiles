@@ -5,19 +5,19 @@
 # the path as 'cd /usr/local/'
 #
 function __symnav_complete
-    # Ensure symnav is initialized
-    __symnav_initialize
+	# Ensure symnav is initialized
+	__symnav_initialize
 
-    set -l current_token (commandline --current-token)
-    set -l relative_path (__symnav_relative_to "$current_token")
+	set -l current_token (commandline --current-token)
+	set -l relative_path (__symnav_relative_to "$current_token")
 
-    # If the "relative path" returned by __symnav_relative_to is actually an absolute path then
-    # we may have encountered a symbolic link during path resolution so we should try to substitute
-    # the for current_buffer token. The other possibility is that the user provided an absolute real path
-    # This test is an optimization to avoid extra calls for relative path completion
+	# If the "relative path" returned by __symnav_relative_to is actually an absolute path then
+	# we may have encountered a symbolic link during path resolution so we should try to substitute
+	# the for current_buffer token. The other possibility is that the user provided an absolute real path
+	# This test is an optimization to avoid extra calls for relative path completion
 
-    if test -n "$relative_path"
-    and __symnav_is_absolute $relative_path
+	if test -n "$relative_path"
+	and __symnav_is_absolute $relative_path
 	set -l before_buffer (commandline --current-buffer)
 
 	__symnav_replace_current_token (__symnav_get_substitution "$current_token")
@@ -27,7 +27,7 @@ function __symnav_complete
 	test $symnav_execute_substitution -eq 0
 	and test $before_buffer != (commandline --current-buffer)
 	and return
-    end
+	end
 
-    commandline -f complete
+	commandline -f complete
 end

@@ -14,33 +14,33 @@
 # We also need to be sure to save anything thats to the right of the cursor at the time of completion ('the_right').
 #
 function __symnav_replace_current_token --argument new_token
-    set -l before_buffer (commandline --current-buffer)
-    set -l before_at_cursor (commandline --cut-at-cursor)
-    set -l token (commandline --current-token)
-    set -l commandline_at_cursor_with_token
-    # Since this token will be placed raw onto the command line (no quotes)
-    # we need to escape any spaces (assuming they're not already escaped)
-    set -l escaped_token (string replace --all --regex -- '(?<!\\\\)\s' '\\\\\\\\ ' "$new_token")
-    if not string match --quiet -- "*$token" "$before_at_cursor"
-	set -l token_array (string split -- '' "$token")
-	set -l test_commandline $before_at_cursor
-	set -l test_append_chars
-	while not string match --quiet -- "*$token" "$test_commandline"; and test (count $token_array) -gt 0
-	    set -l char $token_array[-1]
-	    set -e token_array[-1]
-	    set test_append_chars "$char$test_append_chars"
-	    set test_commandline "$before_at_cursor$test_append_chars"
+	set -l before_buffer (commandline --current-buffer)
+	set -l before_at_cursor (commandline --cut-at-cursor)
+	set -l token (commandline --current-token)
+	set -l commandline_at_cursor_with_token
+	# Since this token will be placed raw onto the command line (no quotes)
+	# we need to escape any spaces (assuming they're not already escaped)
+	set -l escaped_token (string replace --all --regex -- '(?<!\\\\)\s' '\\\\\\\\ ' "$new_token")
+	if not string match --quiet -- "*$token" "$before_at_cursor"
+		set -l token_array (string split -- '' "$token")
+		set -l test_commandline $before_at_cursor
+		set -l test_append_chars
+		while not string match --quiet -- "*$token" "$test_commandline"; and test (count $token_array) -gt 0
+			set -l char $token_array[-1]
+			set -e token_array[-1]
+			set test_append_chars "$char$test_append_chars"
+			set test_commandline "$before_at_cursor$test_append_chars"
+		end
+		set commandline_at_cursor_with_token $test_commandline
+	else
+		set commandline_at_cursor_with_token $before_at_cursor
 	end
-	set commandline_at_cursor_with_token $test_commandline
-    else
-	set commandline_at_cursor_with_token $before_at_cursor
-    end
 
-    # The new command line be "the_left", then the "escaped_token", followed by possibly if not empty "the_right"
-    # It's empty if the cursor was already at the end of the line
-    set -l the_left (string split --right --max 1 -- "$token" "$commandline_at_cursor_with_token")[1]
-    set -l the_right (string sub --start (echo (string length -- "$the_left$token")" + 1" | bc ) -- "$before_buffer")
+	# The new command line be "the_left", then the "escaped_token", followed by possibly if not empty "the_right"
+	# It's empty if the cursor was already at the end of the line
+	set -l the_left (string split --right --max 1 -- "$token" "$commandline_at_cursor_with_token")[1]
+	set -l the_right (string sub --start (echo (string length -- "$the_left$token")" + 1" | bc ) -- "$before_buffer")
 
-    commandline --replace "$the_left$escaped_token$the_right"
-    commandline --cursor (string length "$the_left$escaped_token")
+	commandline --replace "$the_left$escaped_token$the_right"
+	commandline --cursor (string length "$the_left$escaped_token")
 end

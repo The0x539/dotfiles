@@ -6,31 +6,31 @@
 # will return '../foo/bar'
 #
 function __symnav_relative_to --argument path
-    set -l to_dir $path
+	set -l to_dir $path
 
-    __symnav_is_absolute "$to_dir"
-    and set -l path_to_resolve $to_dir
-    or set -l path_to_resolve "$symnav_pwd/$to_dir"
+	__symnav_is_absolute "$to_dir"
+	and set -l path_to_resolve $to_dir
+	or set -l path_to_resolve "$symnav_pwd/$to_dir"
 
-    set -l path_list (__symnav_split_path "$path_to_resolve")
-    set -l symlink_detected 0
-    set -l resolved_path
-    for component in $path_list
-	if test -z "$component"
-	    set resolved_path $resolved_path ""
-	else if test $component = ".."
-	    test -L (__symnav_join_path $resolved_path)
-	    and set symlink_detected 1
-	    set -e resolved_path[-1]
-	else
-	    set resolved_path $resolved_path "$component"
+	set -l path_list (__symnav_split_path "$path_to_resolve")
+	set -l symlink_detected 0
+	set -l resolved_path
+	for component in $path_list
+		if test -z "$component"
+			set resolved_path $resolved_path ""
+		else if test $component = ".."
+			test -L (__symnav_join_path $resolved_path)
+			and set symlink_detected 1
+			set -e resolved_path[-1]
+		else
+			set resolved_path $resolved_path "$component"
+		end
 	end
-    end
 
-    if test $symlink_detected -eq 1
-	__symnav_join_path $resolved_path
-    else
-	printf '%s' $to_dir
-    end
+	if test $symlink_detected -eq 1
+		__symnav_join_path $resolved_path
+	else
+		printf '%s' $to_dir
+	end
 end
 

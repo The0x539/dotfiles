@@ -5,26 +5,26 @@
 # This will remove all '../' and './'
 #
 function __symnav_resolve_to --argument path
-    set -l to_dir $path
+	set -l to_dir $path
 
-    __symnav_is_absolute "$to_dir"
-    and set -l path_to_resolve $to_dir
-    or set -l path_to_resolve "$symnav_pwd/$to_dir"
+	__symnav_is_absolute "$to_dir"
+	and set -l path_to_resolve $to_dir
+	or set -l path_to_resolve "$symnav_pwd/$to_dir"
 
-    set -l path_list (__symnav_split_path "$path_to_resolve")
+	set -l path_list (__symnav_split_path "$path_to_resolve")
 
-    set -l resolved_path
-    for component in $path_list
-	if test -z "$component"
-	    set resolved_path $resolved_path ""
-	else if test $component = ".."
-	    set -e resolved_path[-1]
-	else if test $component = "."
-	    continue # skip this component
-	else
-	    set resolved_path $resolved_path "$component"
+	set -l resolved_path
+	for component in $path_list
+		if test -z "$component"
+			set resolved_path $resolved_path ""
+		else if test $component = ".."
+			set -e resolved_path[-1]
+		else if test $component = "."
+			continue # skip this component
+		else
+			set resolved_path $resolved_path "$component"
+		end
 	end
-    end
 
-    __symnav_join_path $resolved_path
+	__symnav_join_path $resolved_path
 end
