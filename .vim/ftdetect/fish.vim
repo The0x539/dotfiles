@@ -3,7 +3,7 @@ autocmd BufRead,BufNewFile *.fish setfiletype fish
 " Detect fish scripts by the shebang line.
 autocmd BufRead *
             \ if getline(1) =~# '\v^#!%(\f*/|/usr/bin/env\s*<)fish>' |
-            \     setlocal filetype=fish |
+            \ 	setlocal filetype=fish |
             \ endif
 
 " Move cursor to first empty line when using funced.

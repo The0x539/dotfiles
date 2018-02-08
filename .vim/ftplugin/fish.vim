@@ -10,20 +10,20 @@ setlocal suffixesadd^=.fish
 
 " Use the 'j' format option when available.
 if v:version ># 703 || v:version ==# 703 && has('patch541')
-    setlocal formatoptions+=j
+	setlocal formatoptions+=j
 endif
 
 if executable('fish_indent')
-    setlocal formatexpr=fish#Format()
+	setlocal formatexpr=fish#Format()
 endif
 
 if executable('fish')
-    setlocal omnifunc=fish#Complete
-    for s:path in split(system("fish -c 'echo $fish_function_path'"))
-        execute 'setlocal path+='.s:path
-    endfor
+	setlocal omnifunc=fish#Complete
+	for s:path in split(system("fish -c 'echo $fish_function_path'"))
+		execute 'setlocal path+='.s:path
+	endfor
 else
-    setlocal omnifunc=syntaxcomplete#Complete
+	setlocal omnifunc=syntaxcomplete#Complete
 endif
 
 " Use the 'man' wrapper function in fish to include fish's man pages.
