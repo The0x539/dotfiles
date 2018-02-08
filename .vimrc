@@ -1,6 +1,7 @@
 "Slightly modified Dracula color scheme
 colorscheme dracula
-highlight NonText ctermfg=0
+highlight! def link NonText Ignore
+highlight SpecialKey ctermbg=NONE ctermfg=DarkGray
 set term=screen-256color
 
 "Tabs have a width of 4, and are actual tabs
@@ -9,10 +10,8 @@ set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 "Show commands
 set showcmd
 
-"Put cursor at start of tabs in normal mode (bit of a hack)
+"Put cursor at start of tabs in normal mode (huge hack)
 set list listchars=tab:\ \ 
-highlight OnlyTabs ctermbg=0
-match OnlyTabs /\t/
 
 "The internet told me to turn off modelines
 set modelines=0
@@ -28,3 +27,8 @@ set number
 if has('mouse')
 	set mouse=a
 endif
+
+"Display trailing whitespace
+highlight ExtraSpace ctermbg=234
+syntax match ExtraSpace /\s\+$/ containedin=ALL
+autocmd Syntax * syntax match ExtraSpace /\s\+$/ containedin=ALL
