@@ -32,3 +32,8 @@ endif
 highlight ExtraSpace ctermbg=234
 syntax match ExtraSpace /\s\+$/ containedin=ALL
 autocmd Syntax * syntax match ExtraSpace /\s\+$/ containedin=ALL
+
+"Display leading spaces
+highlight LeadingSpace ctermbg=234
+syntax match LeadingSpace /^ \+/ containedin=ALL
+autocmd Syntax * syntax match LeadingSpace /^ \+/ containedin=ALL
