@@ -3,3 +3,4 @@
 !.config/fish/functions/
 !.config/fish/conf.d/
 .vim/.netrwhist
+.config/nvim/.netrwhist
