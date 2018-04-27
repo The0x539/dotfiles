@@ -1,6 +1,16 @@
-.config/fish/*
-!.config/fish/*.fish
-!.config/fish/functions/
-!.config/fish/conf.d/
-.vim/.netrwhist
+# .config/fish/*
+# !.config/fish/*.fish
+# !.config/fish/functions/
+# !.config/fish/conf.d/
+# .vim/.netrwhist
+# .config/nvim/.netrwhist
+# .config/nvim/plugged/
+
+.config/*
+
+!.config/fish/
+.config/fish/fishd.*
+
+!.config/nvim/
 .config/nvim/.netrwhist
+.config/nvim/plugged
