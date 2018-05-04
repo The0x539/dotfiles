@@ -1,11 +1,16 @@
 call plug#begin('~/.config/nvim/plugged')
-Plug 'dag/vim-fish' " Fish script syntax highlighting
-Plug 'scrooloose/NERDTree' " File system explorer
-Plug 'Valloric/YouCompleteMe' " Code completion
+	Plug 'dag/vim-fish'                   " Fish script syntax highlighting
+	Plug 'scrooloose/NERDTree'            " File system explorer
+	Plug 'Valloric/YouCompleteMe'         " Code completion
+	Plug 'dracula/vim', {'as': 'dracula'} " Dracula color scheme
 call plug#end()
 
-colorscheme dracula_black
-highlight NonText ctermfg=0
+set termguicolors
+colorscheme dracula
+highlight Normal ctermbg=NONE
+highlight LineNr ctermbg=NONE ctermfg=NONE guifg=fg guibg=bg
+highlight NonText ctermbg=NONE ctermfg=0 guibg=bg guifg=bg
+
 
 " autocmd vimenter * NERDTree
 map <C-n> :NERDTreeToggle<LF>
