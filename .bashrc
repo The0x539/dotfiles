@@ -32,11 +32,7 @@ function ppwd {
 	echo -n "\w\[${NC}\]"
 }
 function promptend {
-	if [ "$USER" == "root" ]; then
-		echo -n "# "
-	else
-		echo -n "> "
-	fi
+	echo -n " "
 }
 PATH=~/.local/bin:$PATH
 tabs 4
