@@ -2,6 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'dag/vim-fish'                   " Fish script syntax highlighting
 	Plug 'scrooloose/NERDTree'            " File system explorer
 	Plug 'dracula/vim', {'as': 'dracula'} " Dracula color scheme
+	Plug 'pangloss/vim-javascript'        " Improved JS syntax highlighting
 call plug#end()
 
 " set termguicolors
