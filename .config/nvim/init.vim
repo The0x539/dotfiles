@@ -1,11 +1,10 @@
 call plug#begin('~/.config/nvim/plugged')
 	Plug 'dag/vim-fish'                   " Fish script syntax highlighting
 	Plug 'scrooloose/NERDTree'            " File system explorer
-	Plug 'Valloric/YouCompleteMe'         " Code completion
 	Plug 'dracula/vim', {'as': 'dracula'} " Dracula color scheme
 call plug#end()
 
-set termguicolors
+" set termguicolors
 colorscheme dracula
 highlight Normal ctermbg=NONE
 highlight LineNr ctermbg=NONE ctermfg=NONE guifg=fg guibg=bg
