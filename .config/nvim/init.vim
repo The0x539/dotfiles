@@ -3,6 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'scrooloose/NERDTree'            " File system explorer
 	Plug 'dracula/vim', {'as': 'dracula'} " Dracula color scheme
 	Plug 'pangloss/vim-javascript'        " Improved JS syntax highlighting
+	Plug 'briancollins/vim-jst'           " EJS syntax highlighting
 call plug#end()
 
 " set termguicolors
