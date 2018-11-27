@@ -1,3 +1,3 @@
 function ...
 	cd ../..
-exit
+end
