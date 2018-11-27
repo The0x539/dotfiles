@@ -21,7 +21,6 @@ set mouse=a
 map <ScrollWheelUp> <Up>
 map <ScrollWheelDown> <Down>
 
-set number
 
 let g:python3_host_prog = '/usr/bin/python3'
 let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_extra_conf.py'
@@ -33,3 +32,10 @@ command Wq wq
 command W w
 command Q q
 nnoremap ; :
+
+set number relativenumber
+augroup numbertoggle
+	autocmd!
+	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+	autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
