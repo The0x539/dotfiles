@@ -1,5 +1,6 @@
 alias color=set_color
 alias vim=nvim
+alias exeunt='kill (jobs -p | tail -n+1); and exit'
 set PATH ~/.local/bin $PATH
 
 set -U fish_color_autosuggestion BD93F9
