@@ -25,7 +25,7 @@ map <ScrollWheelDown> <Down>
 let g:python3_host_prog = '/usr/bin/python3'
 let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_extra_conf.py'
 
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab autoindent
 
 command WQ wq
 command Wq wq
