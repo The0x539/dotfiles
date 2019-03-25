@@ -11,9 +11,5 @@ function fish_prompt --description 'Write out the prompt'
 	end
 	echo -n $USER(color $fish_color_operator)@(color normal)(hostname)\ $__cwd_color(prompt_pwd_full)(color normal)
 	echo -n $__git_cb
-	echo
-	if [ $realstatus != 0 ]
-		echo -n "$realstatus "
-	end
-	echo -n "> "
+	echo -n ' '
 end
