@@ -1,7 +1,9 @@
 .config/*
 
 !.config/fish/
+# these two items aren't quite ready for the repo
 .config/fish/fish_variables
+.config/fish/completions
 
 !.config/nvim/
 .config/nvim/.netrwhist
