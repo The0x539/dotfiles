@@ -8,3 +8,5 @@
 !.config/nvim/
 .config/nvim/.netrwhist
 .config/nvim/dein
+
+!.config/omf/
