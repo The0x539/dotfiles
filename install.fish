@@ -1,7 +1,5 @@
 #!/usr/bin/env fish
 
-set -l tmp (mktemp -d)
-
 # XDG_CONFIG_HOME support is broken elsewhere in these dotfiles anyway. Whatever.
 set -l cfg_home $HOME/.config
 
@@ -17,18 +15,26 @@ end
 set -l old $HOME/config_old
 mkdir $old
 
+set -l tmp (mktemp -d)
 ln -s $repo_reldir/.config $cfg_home
 for item in $tmp/.config/{*,.*}
-	mv --no-clobber $item $cfg_home
-	if test -e $item # if we couldn't move without clobbering
-		mv $item $old # then move it to the place where old stuff goes
+	switch (basename $item)
+		case . ..
+			continue
+
+		case '*'
+			mv --no-clobber $item $cfg_home
+			if test -e $item # if we couldn't move without clobbering
+				mv $item $old # then move it to the place where old stuff goes
+			end
 	end
 end
 rmdir $tmp/.config
+rmdir $tmp
 
 for item in $repo_reldir/{*,.*}
-	switch $item
-		case .config .git .gitignore .gitmodules install.fish oh-my-fish
+	switch (basename $item)
+		case . .. .config .git .gitignore .gitmodules install.fish oh-my-fish
 			continue
 
 		case '*'
@@ -42,4 +48,6 @@ end
 
 popd
 
-rmdir $tmp
+pushd $repo_dir/oh-my-fish
+./bin/install --offline --noninteractive
+popd
