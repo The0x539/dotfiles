@@ -8,6 +8,7 @@ set -l repo_reldir (string replace $HOME . $repo_dir)
 
 pushd $HOME
 
+set -l tmp (mktemp -d)
 if test -d $cfg_home
 	mv $cfg_home $tmp
 end
@@ -15,7 +16,6 @@ end
 set -l old $HOME/config_old
 mkdir $old
 
-set -l tmp (mktemp -d)
 ln -s $repo_reldir/.config $cfg_home
 for item in $tmp/.config/{*,.*}
 	switch (basename $item)
