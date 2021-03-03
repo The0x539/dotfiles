@@ -49,5 +49,7 @@ end
 popd
 
 pushd $repo_dir/oh-my-fish
+git submodule init
+git submodule update
 ./bin/install --offline --noninteractive
 popd
