@@ -8,5 +8,6 @@
 !.config/nvim/
 .config/nvim/.netrwhist
 .config/nvim/dein
+.config/nvim/local_plugins.txt
 
 !.config/omf/

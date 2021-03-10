@@ -2,7 +2,7 @@ set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state('~/.config/nvim/dein')
 	call dein#begin('~/.config/nvim/dein')
 	
-	for plugin in readfile($HOME . '/.config/nvim/plugins.txt')
+	for plugin in readfile($HOME . '/.config/nvim/plugins.txt') + readfile($HOME . '/.config/nvim/local_plugins.txt')
 		if strlen(plugin) > 0
 			call dein#add(plugin)
 		end
