@@ -2,4 +2,5 @@ package bang-bang
 package cd
 package cdb
 package colored-man-pages
+package fzf
 theme default
