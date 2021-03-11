@@ -13,3 +13,5 @@ nvim-lua/completion-nvim
 dracula/vim
 
 mattn/webapi-vim
+
+junegunn/fzf.vim
