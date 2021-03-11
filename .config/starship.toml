@@ -1,0 +1,22 @@
+add_newline = false
+
+[directory]
+truncation_length = 0
+style = "cyan"
+
+[status]
+disabled = false
+format = "[$status ]($style)"
+
+[username]
+format = "[$user]($style)"
+style_user = ""
+show_always = true
+
+[hostname]
+format = "[@](bright-black)[$hostname]($style) "
+style = ""
+ssh_only = false
+
+[line_break]
+disabled = false
