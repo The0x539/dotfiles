@@ -11,6 +11,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 set completeopt=menuone,noinsert,noselect
 "set shortmess+=c
 
+set updatetime=100
 let g:completion_matching_strategy_list = ['exact', 'substring']
 let g:completion_enable_auto_paren = 1
 
