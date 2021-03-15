@@ -61,3 +61,8 @@ augroup term
 augroup END
 
 command Reload source ~/.config/nvim/init.vim
+
+nmap <leader>sp :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunction
