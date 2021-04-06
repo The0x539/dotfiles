@@ -43,6 +43,8 @@ let g:vim_json_warnings = 0
 let g:rustfmt_autosave = 1
 let g:rust_clip_command = 'wl-copy'
 let g:vimsyn_embed = 'lP'
+let g:clang_format#auto_format = 1
+let g:clang_format#enable_fallback_style = 0
 
 set tabstop=4 shiftwidth=4
 set mouse=a
