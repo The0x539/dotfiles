@@ -6,6 +6,7 @@ terminalnode/sway-vim-syntax
 cespare/vim-toml
 rust-lang/rust.vim
 gisphm/vim-gitignore
+rhysd/vim-clang-format
 
 neovim/nvim-lspconfig
 nvim-lua/completion-nvim
