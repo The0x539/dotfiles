@@ -4,3 +4,6 @@
 [submodule "oh-my-fish"]
 	path = oh-my-fish
 	url = https://github.com/oh-my-fish/oh-my-fish
+[submodule ".config/kak/plugins/plug.kak"]
+	path = .config/kak/plugins/plug.kak
+	url = https://github.com/andreyorst/plug.kak.git
