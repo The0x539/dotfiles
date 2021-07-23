@@ -13,3 +13,7 @@
 !.config/omf/
 
 !.config/starship.toml
+
+!.config/kak
+!.config/kak-lsp
+.config/kak/plugins
