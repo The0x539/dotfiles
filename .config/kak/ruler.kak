@@ -10,7 +10,6 @@ define-command -hidden no-line-numbers %{
 
 define-command -hidden update-ruler %{
 	eval %sh{
-		echo abc > ~/oo.txt
 		if [ "$kak_opt_readonly" = 'true' ]; then
 			echo no-line-numbers
 		elif [ "$kak_opt_normal_mode" = 'true' ] && [ "$kak_opt_focused" = 'true' ]; then
