@@ -21,3 +21,5 @@ set-face global keyword "%opt{pink}"
 set-face global meta "%opt{green}+i"
 set-face global macro "%opt{purple}"
 set-face global operator "%opt{white}"
+
+set-face global InlayHint "%opt{blue}"

@@ -12,9 +12,9 @@ add-highlighter global/ wrap
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug "andreyorst/plug.kak" noload
 
-source "%val{config}/theme.kak"
 source "%val{config}/ruler.kak"
 source "%val{config}/lsp.kak"
+source "%val{config}/theme.kak"
 source "%val{config}/powerline.kak"
 
 #plug "andreyorst/fzf.kak"

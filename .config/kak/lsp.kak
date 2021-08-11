@@ -1,26 +1,64 @@
 plug "kak-lsp/kak-lsp" do %{
-	cargo build --release --locked
-	cargo install --force --path .
+	cargo install --locked --force --path .
 } config %{
 	set-option global lsp_hover_anchor true
-	hook global WinSetOption filetype=rust %{
-		lsp-enable-window
-		#lsp-auto-hover-enable
-		lsp-auto-signature-help-enable
-		#lsp-inline-diagnostics-enable window
+	set-option global lsp_hover_max_lines 16
 
-		set-option window aligntab false
-		set-option window indentwidth 4
+	hook global WinSetOption "filetype=(rust|go)" %{
+		activate-lsp  %val{hook_param_capture_1}
 
-		hook window BufWritePre .* lsp-formatting-sync
-
-		hook window -group semantic-tokens BufReload .* lsp-semantic-tokens
-		hook window -group semantic-tokens NormalIdle .* lsp-semantic-tokens
-		hook window -group semantic-tokens InsertIdle .* lsp-semantic-tokens
 		hook -once -always window WinSetOption filetype=.* %{
-			remove-hooks window semantic-tokens
+			deactivate-lsp %val{hook_param_capture_1}
 		}
 	}
+}
+
+# a stupid hack to remove gutter jitter from the line diagnostics
+# reinstalls itself as a one-time hook so that it doesn't try to recurse itself
+define-command -hidden fix-jitter %{
+	set-option -add window lsp_error_lines "0| "
+	hook -group lsp -once window WinSetOption "lsp_error_lines=\.\.\." fix-jitter
+}
+
+# General routines for activating/deactivating LSP functionality
+define-command -params 0..1 activate-lsp %{
+	lsp-enable-window
+	lsp-auto-signature-help-enable
+	lsp-inlay-diagnostics-enable window
+	#lsp-auto-hover-enable
+
+	fix-jitter
+
+	hook window -group lsp BufWritePre .* lsp-formatting-sync
+	map window user l %{: enter-user-mode lsp<ret>} -docstring "LSP mode"
+
+	hook window -group lsp BufReload .* lsp-semantic-tokens
+	hook window -group lsp NormalIdle .* lsp-semantic-tokens
+	hook window -group lsp InsertIdle .* lsp-semantic-tokens
+
+	try "activate-lsp-%arg{1}"
+}
+
+define-command deactivate-lsp -params 0..1  %{
+	lsp-disable-window
+	remove-hooks window lsp
+	unmap window user l
+
+	try "deactivate-lsp-%arg{1}"
+}
+
+# Filetype specific activation/deactivation routines
+define-command -hidden activate-lsp-rust %{
+	set-option window aligntab false
+	set-option window indentwidth 4
+	#hook window -group lsp BufReload .* rust-analyzer-inlay-hints
+	#hook window -group lsp NormalIdle .* rust-analyzer-inlay-hints
+	#hook window -group lsp InsertIdle .* rust-analyzer-inlay-hints
+}
+
+define-command -hidden deactivate-lsp-rust %{
+	set-option window aligntab true
+	set-option window indentwidth 0
 }
 
 hook global InsertCompletionShow .* %{
