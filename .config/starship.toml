@@ -14,7 +14,7 @@ style_user = ""
 show_always = true
 
 [hostname]
-format = "[@](bright-black)[$hostname]($style) "
+format = "[@](#6272a4)[$hostname]($style) "
 style = ""
 ssh_only = false
 
