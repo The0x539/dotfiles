@@ -49,16 +49,16 @@ define-command deactivate-lsp -params 0..1  %{
 
 # Filetype specific activation/deactivation routines
 define-command -hidden activate-lsp-rust %{
-	set-option window aligntab false
-	set-option window indentwidth 4
+	#set-option window aligntab false
+	#set-option window indentwidth 4
 	#hook window -group lsp BufReload .* rust-analyzer-inlay-hints
 	#hook window -group lsp NormalIdle .* rust-analyzer-inlay-hints
 	#hook window -group lsp InsertIdle .* rust-analyzer-inlay-hints
 }
 
 define-command -hidden deactivate-lsp-rust %{
-	set-option window aligntab true
-	set-option window indentwidth 0
+	#set-option window aligntab true
+	#set-option window indentwidth 0
 }
 
 hook global InsertCompletionShow .* %{
