@@ -1,4 +1,6 @@
-set -U fish_user_paths ~/.local/bin ~/.cargo/bin ~/.yarn/bin
+for x in local cargo yarn npm-packages
+	fish_add_path ~/.$x/bin
+end
 
 if which starship >/dev/null 2>/dev/null
 	starship init fish | source
