@@ -1,12 +1,16 @@
 colorscheme dracula-transparent
-declare-option str sel 'rgb:44475a'
-declare-option str comment 'rgb:6272a4'
 
-set-face global LineNumbers "%opt{comment}"
+set-face global Whitespace "%opt{blue}"
+
+set-face global LineNumbers "%opt{blue}"
 set-face global LineNumberCursor "%opt{yellow}+b"
 set-face global LineNumbersWrapped "%opt{gray}"
 
+set-face global PrimaryCursor "+r"
 set-face global PrimaryCursorEol "default,%opt{orange}"
+set-face global SecondaryCursor "default,rgb:4d5b86"
+set-face global PrimarySelection "default,%opt{gray}"
+set-face global SecondarySelection "default,%opt{gray}"
 
 set-face global MenuBackground "%opt{white},%opt{gray}"
 set-face global MenuForeground "%opt{white},%opt{blue}+b"
