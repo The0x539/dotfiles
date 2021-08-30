@@ -6,6 +6,7 @@ set-option -add global ui_options ncurses_assistant=none
 
 add-highlighter global/ show-whitespaces -lf ' ' -spc ' ' -tab '│'
 add-highlighter global/ wrap
+add-highlighter global/ show-matching
 
 #map global normal ';' ':'
 

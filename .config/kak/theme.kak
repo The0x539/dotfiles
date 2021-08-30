@@ -27,3 +27,6 @@ set-face global macro "%opt{purple}"
 set-face global operator "%opt{white}"
 
 set-face global InlayHint "%opt{blue}"
+
+add-highlighter global/mch show-matching
+set-face global MatchingChar "+u"
