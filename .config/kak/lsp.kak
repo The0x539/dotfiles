@@ -13,21 +13,12 @@ plug "kak-lsp/kak-lsp" do %{
 	}
 }
 
-# a stupid hack to remove gutter jitter from the line diagnostics
-# reinstalls itself as a one-time hook so that it doesn't try to recurse itself
-define-command -hidden fix-jitter %{
-	set-option -add window lsp_error_lines "0| "
-	hook -group lsp -once window WinSetOption "lsp_error_lines=\.\.\." fix-jitter
-}
-
 # General routines for activating/deactivating LSP functionality
 define-command -params 0..1 activate-lsp %{
 	lsp-enable-window
 	lsp-auto-signature-help-enable
 	lsp-inlay-diagnostics-enable window
 	#lsp-auto-hover-enable
-
-	fix-jitter
 
 	hook window -group lsp BufWritePre .* lsp-formatting-sync
 	map window user l %{: enter-user-mode lsp<ret>} -docstring "LSP mode"
