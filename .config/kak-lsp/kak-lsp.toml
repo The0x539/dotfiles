@@ -9,8 +9,7 @@ verbosity = 2
 # Examples:
 # - TypeScript: https://github.com/microsoft/vscode-languageserver-node/blob/2645fb54ea1e764aff71dee0ecc8aceff3aabf56/client/src/common/semanticTokens.ts#L58
 # - Rust Analyzer: https://github.com/rust-analyzer/rust-analyzer/blob/f6da603c7fe56c19a275dc7bab1f30fe1ad39707/crates/ide/src/syntax_highlighting.rs#L42
-#
-#
+
 [[semantic_tokens]]
 token = "comment"
 face = "documentation"
@@ -22,6 +21,10 @@ face = "comment"
 
 [[semantic_tokens]]
 token = "function"
+face = "function"
+
+[[semantic_tokens]]
+token = "method"
 face = "function"
 
 [[semantic_tokens]]
@@ -40,19 +43,10 @@ face = "operator"
 token = "string"
 face = "string"
 
-#[[semantic_tokens]]
-#token = "type"
-#face = "type"
-
 [[semantic_tokens]]
 token = "variable"
 face = "default+d"
 modifiers = ["readonly"]
-
-[[semantic_tokens]]
-token = "variable"
-face = "default+d"
-modifiers = ["constant"]
 
 [[semantic_tokens]]
 token = "variable"
@@ -61,22 +55,54 @@ face = "variable"
 [[semantic_tokens]]
 token = "parameter"
 face = "parameter"
-
-[[semantic_tokens]]
-token = "selfKeyword"
-face = "selfKeyword"
+modifiers = ["declaration"]
 
 [[semantic_tokens]]
 token = "macro"
 face = "macro"
 
 [[semantic_tokens]]
+token = "macro"
+face = "meta"
+modifiers = ["attribute"]
+
+[[semantic_tokens]]
 token = "type"
 face = "type"
 
 [[semantic_tokens]]
-token = "trait"
-face = "trait"
+token = "struct"
+face = "type"
+
+[[semantic_tokens]]
+token = "enum"
+face = "enum"
+
+[[semantic_tokens]]
+token = "typeAlias"
+face = "typeAlias"
+
+#[[semantic_tokens]]
+#token = "trait"
+#face = "trait"
+
+[[semantic_tokens]]
+token = "selfKeyword"
+face = "selfKeyword"
+
+[[semantic_tokens]]
+token = "variable"
+face = "constant"
+modifiers = ["constant"]
+
+[[semantic_tokens]]
+token = "typeParameter"
+face = "typeParameter"
+modifiers = ["declaration"]
+
+[[semantic_tokens]]
+token = "formatSpecifier"
+face = "formatSpecifier"
 
 [server]
 # exit session if no requests were received during given period in seconds
