@@ -8,9 +8,21 @@ define-command -hidden no-line-numbers %{
 	remove-highlighter window/ruler
 }
 
+declare-option -hidden bool ruler_enabled true
+
+define-command -params 1 disable-ruler %{
+	set-option %arg{1} ruler_enabled false
+	update-ruler
+}
+
+define-command -params 1 enable-ruler %{
+	set-option %arg{1} ruler_enabled true
+	update-ruler
+}
+
 define-command -hidden update-ruler %{
 	eval %sh{
-		if [ "$kak_opt_readonly" = 'true' ]; then
+		if [ "$kak_opt_readonly" = 'true' -o "$kak_opt_ruler_enabled" = 'false' ]; then
 			echo no-line-numbers
 		elif [ "$kak_opt_normal_mode" = 'true' ] && [ "$kak_opt_focused" = 'true' ]; then
 			echo relative-line-numbers
