@@ -42,3 +42,21 @@ plug "alexherbo2/auto-pairs.kak" config %{
 		handle-deleted-opening-pair '<' '>'
 	}
 }
+
+plug "andreyorst/kaktree" config %{
+	hook global WinSetOption filetype=kaktree %{
+		remove-highlighter buffer/numbers
+		remove-highlighter buffer/matching
+		remove-highlighter buffer/wrap
+		remove-highlighter buffer/show-whitespaces
+		disable-ruler buffer
+	}
+	kaktree-enable
+} defer kaktree %{
+	set-option global kaktree_dir_icon_close ''
+	set-option global kaktree_dir_icon_open 'ﱮ'
+	set-option global kaktree_file_icon ''
+	set-option global kaktree_indentation 1
+	set-option global kaktree_show_help false
+	map global normal <c-n> ': kaktree-toggle<ret>'
+}
