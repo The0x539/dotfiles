@@ -11,4 +11,9 @@ plug "andreyorst/smarttab.kak" defer smarttab %{
 		set-option window aligntab false
 		set-option window indentwidth 4
 	}
+	hook global WinSetOption filetype=(html) %{
+		expandtab
+		set-option window aligntab false
+		set-option window indentwidth 2
+	}
 }
