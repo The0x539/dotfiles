@@ -9,6 +9,7 @@ hook global BufCreate '.*' %{
 	add-highlighter buffer/show-whitespaces show-whitespaces -lf ' ' -spc ' ' -tab '│'
 	add-highlighter buffer/wrap wrap
 	add-highlighter buffer/matching show-matching
+	add-highlighter buffer/col80 column 80 Col80
 }
 
 #map global normal ';' ':'

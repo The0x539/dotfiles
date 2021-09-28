@@ -5,6 +5,7 @@ set-face global Whitespace "%opt{blue}"
 set-face global LineNumbers "%opt{blue}"
 set-face global LineNumberCursor "%opt{yellow}+b"
 set-face global LineNumbersWrapped "%opt{gray}"
+set-face global Col80 "default,%opt{black}"
 
 set-face global PrimaryCursor "+r"
 set-face global PrimaryCursorEol "default,%opt{orange}"
