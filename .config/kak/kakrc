@@ -63,3 +63,5 @@ plug "andreyorst/kaktree" config %{
 	set-option global kaktree_show_help false
 	map global normal <c-n> ': kaktree-toggle<ret>'
 }
+
+plug "occivink/kakoune-sudo-write"
