@@ -17,7 +17,7 @@ plug "kak-lsp/kak-lsp" do %{
 define-command -params 0..1 activate-lsp %{
 	lsp-enable-window
 	lsp-auto-signature-help-enable
-	lsp-inlay-diagnostics-enable window
+	#lsp-inlay-diagnostics-enable window
 	#lsp-auto-hover-enable
 
 	hook window -group lsp BufWritePre .* lsp-formatting-sync

@@ -33,18 +33,18 @@ plug "lePerdu/kakboard" config %{
 	hook global WinCreate .* kakboard-enable
 }
 
-plug "alexherbo2/auto-pairs.kak" config %{
-	enable-auto-pairs
-
-	# Custom hooks for the <> pairing that don't interfere with normal usage
-	hook global InsertKey '<a-,>' %{
-		execute-keys '<'
-		handle-inserted-opening-pair '<' '>'
-	}
-	hook global InsertDelete '<' %{
-		handle-deleted-opening-pair '<' '>'
-	}
-}
+#plug "alexherbo2/auto-pairs.kak" config %{
+#	enable-auto-pairs
+#
+#	# Custom hooks for the <> pairing that don't interfere with normal usage
+#	hook global InsertKey '<a-,>' %{
+#		execute-keys '<'
+#		handle-inserted-opening-pair '<' '>'
+#	}
+#	hook global InsertDelete '<' %{
+#		handle-deleted-opening-pair '<' '>'
+#	}
+#}
 
 plug "andreyorst/kaktree" config %{
 	hook global WinSetOption filetype=kaktree %{
