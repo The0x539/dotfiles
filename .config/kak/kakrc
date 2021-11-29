@@ -22,6 +22,7 @@ source "%val{config}/ruler.kak"
 source "%val{config}/lsp.kak"
 source "%val{config}/theme.kak"
 source "%val{config}/powerline.kak"
+source "%val{config}/autofmt.kak"
 
 #plug "andreyorst/fzf.kak"
 #map global normal <c-p> ': fzf-mode<ret>'
@@ -31,6 +32,9 @@ source "%val{config}/powerline.kak"
 
 plug "lePerdu/kakboard" config %{
 	hook global WinCreate .* kakboard-enable
+
+	set-option global kakboard_copy_cmd 'win32yank.exe -i'
+	set-option global kakboard_paste_cmd 'win32yank.exe -o'
 }
 
 #plug "alexherbo2/auto-pairs.kak" config %{
