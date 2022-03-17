@@ -32,3 +32,5 @@ disabled = false
 format = "[$time]($style)"
 style = "bright-black"
 
+[env_var.fish_private_mode]
+format = "🎭"
