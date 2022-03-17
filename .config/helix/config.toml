@@ -1,0 +1,9 @@
+theme = "dracula"
+
+[editor]
+line-number = "relative"
+true-color = true
+cursor-shape = { normal = "block", select = "block", insert = "bar" }
+
+[lsp]
+display-messages = true
