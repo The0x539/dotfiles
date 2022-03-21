@@ -12,8 +12,9 @@ else if type -q youtube-dl
 end
 
 if type -q exa
-    alias ls exa
-    alias ll 'exa -l'
+    alias ls 'exa --time-style iso --classify'
+    alias ll 'ls -l'
+    alias la 'll -a'
 end
 
 if type -q bat
