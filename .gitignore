@@ -15,3 +15,5 @@
 .cargo/*
 !.cargo/config
 !.cargo/config.toml
+
+!config/bat/
