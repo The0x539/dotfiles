@@ -11,3 +11,6 @@
 
 !.config/helix/
 .config/helix/runtime/
+
+.cargo/*
+!.cargo/config
