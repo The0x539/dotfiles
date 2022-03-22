@@ -11,6 +11,10 @@ else if type -q youtube-dl
     alias ytdl youtube-dl
 end
 
+if not status --is-interactive
+    exit
+end
+
 if type -q exa
     alias ls 'exa --time-style iso --classify --git'
     alias ll 'ls -l'
