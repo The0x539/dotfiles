@@ -48,3 +48,5 @@ end
 
 popd
 
+# TODO: this is a hack. see https://github.com/jorgebucaran/fisher/issues/611
+set -U _fisher_plugins (cat $cfg_home/fish/fish_plugins)
