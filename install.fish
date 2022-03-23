@@ -47,3 +47,5 @@ for item in $repo_reldir/{*,.*}
 end
 
 popd
+
+fisher install jorgebucaran/fisher
