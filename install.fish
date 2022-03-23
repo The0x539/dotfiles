@@ -34,7 +34,7 @@ rmdir $tmp
 
 for item in $repo_reldir/{*,.*}
 	switch (basename $item)
-		case . .. .config .git .gitignore .gitmodules install.fish oh-my-fish
+		case . .. .config .git .gitignore .gitmodules install.fish
 			continue
 
 		case '*'
@@ -46,10 +46,4 @@ for item in $repo_reldir/{*,.*}
 	end
 end
 
-popd
-
-pushd $repo_dir/oh-my-fish
-git submodule init
-git submodule update
-./bin/install --offline --noninteractive
 popd
