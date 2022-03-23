@@ -48,4 +48,3 @@ end
 
 popd
 
-fisher install jorgebucaran/fisher
