@@ -1,9 +1,51 @@
-theme = "dracula"
+theme = "my-dracula"
 
 [editor]
 line-number = "relative"
 true-color = true
 cursor-shape = { normal = "block", select = "block", insert = "bar" }
+color-modes = true
+bufferline = "multiple"
+auto-format = true
+end-of-line-diagnostics = "hint"
 
-[lsp]
+[editor.indent-guides]
+render = true
+
+[editor.lsp]
 display-messages = true
+
+[editor.inline-diagnostics]
+cursor-line = "info"
+# other-lines = "info"
+
+[editor.statusline]
+left = [
+  "mode",
+  "total-line-numbers",
+  "separator",
+  "position",
+  "separator",
+  "selections",
+  "separator",
+  "primary-selection-length",
+  "spacer",
+  "spinner",
+]
+center = [
+  "diagnostics",
+  "file-name",
+  "read-only-indicator",
+  "file-modification-indicator",
+]
+right = [
+  "register",
+  "version-control",
+  "spacer",
+  "separator",
+  "file-encoding",
+  "file-line-ending",
+  "separator",
+  "file-type",
+]
+separator = "┃"

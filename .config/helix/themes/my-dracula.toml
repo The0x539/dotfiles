@@ -1,0 +1,18 @@
+inherits = "dracula" 
+
+"ui.background" = {}
+
+"ui.cursor"        = { fg = "background", bg = "purple", modifiers = ["dim"] }
+"ui.cursor.normal" = { fg = "background", bg = "purple", modifiers = ["dim"] }
+"ui.cursor.insert" = { fg = "background", bg = "purple", modifiers = ["dim"] }
+"ui.cursor.select" = { fg = "background", bg = "purple", modifiers = ["dim"] }
+
+"ui.cursor.primary" = { modifiers = ["reversed"] }
+"ui.cursor.primary.normal" = { modifiers = ["reversed"] }
+"ui.cursor.primary.insert" = { modifiers = ["reversed"] }
+"ui.cursor.primary.select" = { modifiers = ["reversed"] }
+
+"ui.cursor.match" = { fg = "green", modifiers = ["underlined"] }
+
+[palette]
+selection = "#44475a"
