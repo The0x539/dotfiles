@@ -1,3 +1,5 @@
+set fish_greeting
+
 for x in local cargo yarn npm-packages
 	fish_add_path ~/.$x/bin
 end
