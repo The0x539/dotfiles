@@ -1,6 +1,10 @@
 alias edit '$EDITOR'
 alias e '$EDITOR'
 
+if type -q helix; and not type -q hx
+    alias hx helix
+end
+
 if type -q lazygit
     alias lg lazygit
 end
@@ -15,8 +19,8 @@ if not status --is-interactive
     exit
 end
 
-if type -q exa
-    alias ls 'exa --time-style iso --classify --git'
+if type -q eza
+    alias ls 'eza --time-style iso --classify --git'
     alias ll 'ls -l'
     alias la 'll -a'
 end
