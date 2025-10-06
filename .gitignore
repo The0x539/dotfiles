@@ -17,3 +17,5 @@
 !.cargo/config.toml
 
 !.config/bat/
+
+!.config/tmux/
