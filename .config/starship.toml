@@ -1,6 +1,7 @@
 add_newline = false
 
-right_format = """$time"""
+format = "$username$hostname$os$all"
+right_format = "$time"
 
 [directory]
 truncation_length = 0
@@ -17,7 +18,7 @@ style_user = ""
 show_always = true
 
 [hostname]
-format = "[@](#6272a4)[$hostname]($style) "
+format = "[@](bright-black)[$hostname](none) "
 style = ""
 ssh_only = false
 
@@ -34,3 +35,25 @@ style = "bright-black"
 
 [env_var.fish_private_mode]
 format = "🎭"
+
+[os]
+disabled = false
+
+[os.symbols]
+Arch = "[󰣇](#1793d1) "
+Windows = "" # Couldn't find an icon that looks good. Just rely on PowerShell.
+Ubuntu = "[](#E95420) "
+Debian = "[󰣚](#CE0056) "
+NixOS = "[󱄅](#77b6e1) "
+
+
+[shell]
+disabled = false
+format = "$indicator"
+# When 1.24.0 releases, I should be able to express the trailing space here.
+# https://github.com/starship/starship/pull/6338
+#format = '($indicator )'
+
+bash_indicator = "󱆃 "
+powershell_indicator = "[󰨊](#5391FE) "
+fish_indicator = "" # My personal default.
