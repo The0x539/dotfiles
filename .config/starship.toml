@@ -40,7 +40,7 @@ format = "🎭"
 disabled = false
 
 [os.symbols]
-Arch = "[󰣇](#1793d1) "
+Arch = "[󰣇 ](#1793d1)"
 Windows = "" # Couldn't find an icon that looks good. Just rely on PowerShell.
 Ubuntu = "[ ](#E95420)"
 Debian = "[󰣚](#CE0056) "
