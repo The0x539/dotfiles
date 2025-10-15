@@ -98,11 +98,14 @@ contexts:
         - match: '='
           scope: keyword.operator.man
           set: expect-parameter
+        - match: '\s+(?=[\["''<])'
+          set: expect-parameter
         - match: ''
           pop: true
     - include: function-call
     - include: c-code
     - include: env-var
+    - include: hyperlinks
 
   expect-command-line-option:
     - match: '[A-Za-z0-9-\.\?:#\$\+]+'
@@ -217,3 +220,13 @@ contexts:
     - match: '^[ ]{7}([A-Z_]+)\b'
       captures:
         1: support.constant.environment-variable.man
+
+  hyperlinks:
+    - match: '<((https|http|file|mailto):\S+?(\[\d+\])?)>'
+      captures:
+        2: markup.underline.link
+    - match: '<(\S+@\S+?)(\[\d+\])?>'
+      captures:
+        1: markup.underline.link
+    - match: '(https|http|file|mailto):\S+'
+      scope: markup.underline.link
