@@ -8,7 +8,8 @@ scope: source.man
 
 variables:
   section_heading: '^(?!#)\S.*$'
-  command_line_option: '(--?[A-Za-z0-9][_A-Za-z0-9-]*)'
+  command_line_option: '(--?[A-Za-z0-9][_A-Za-z0-9+-]*)'
+  unquoted_value: '[A-Za-z0-9-_.:/=+]+'
 
 # Modifed by The0x539 on 2025-10-15 for somewhat better Dracula compatibility.
 
@@ -87,21 +88,16 @@ contexts:
     # command-line options like --option=value, --some-flag, or -x
     - match: '^[ ]{7}(-)(?=\s)'
       captures:
-        1: variable.parameter.command-line-option.man
+        1: entity.other.attribute-name.command-line-option.man
     - match: '^[ ]{7}(?=-|\+)'
       push: expect-command-line-option
     - match: '(?:[^a-zA-Z0-9_-]|^|\s){{command_line_option}}'
       captures:
-        1: variable.parameter.command-line-option
+        1: entity.other.attribute-name.command-line-option
       push:
         - match: '='
           scope: keyword.operator.man
-          set:
-            - match: '[^],.() ]+'
-              scope: variable.parameter.man
-              pop: true
-            - match: $
-              pop: true
+          set: expect-parameter
         - match: ''
           pop: true
     - include: function-call
@@ -110,13 +106,13 @@ contexts:
 
   expect-command-line-option:
     - match: '[A-Za-z0-9-\.\?:#\$\+]+'
-      scope: variable.parameter.command-line-option.man
+      scope: entity.other.attribute-name.command-line-option.man
     - match: '(\[)(=)'
       captures:
         1: punctuation.section.brackets.begin.man
         2: keyword.operator.man
       push: [command-line-option-or-pipe, expect-parameter]
-    - match: '\['
+    - match: '(?=\[)'
       push:
         - meta_scope: variable.parameter.command-line-option.man
         - match: '\]'
@@ -124,8 +120,8 @@ contexts:
     - match: '='
       scope: keyword.operator.man
       push: expect-parameter
-    - match: (?=.*\.)
-      pop: true
+    # - match: (?=.*[^.]\.$)
+      # pop: true
     - match: '\s'
       push: expect-parameter
     - match: '(,)\s*'
@@ -135,24 +131,42 @@ contexts:
       pop: true
 
   expect-parameter:
-    - match: '[A-Za-z0-9-_]+'
-      scope: variable.parameter.man
-    - match: (?=\s+\|)
-      pop: true
-    - match: \|
-      scope: keyword.operator.logical.man
-    - match: '\['
+    - include: expect-quoted-string
+    - match: '{{unquoted_value}}'
+      scope: variable.parameter
+    - match: '(<)(.*?)(>(\.{3})?)'
+      captures:
+        1: punctuation.definition.generic.begin.man
+        2: variable.parameter.command-line-option.man
+        3: punctuation.definition.generic.end.man
+    - match: '\[(?=[^]]*|)'
+      scope: punctuation.section.brackets.begin.man
+      set: expect-choices
+    - match: '\[,?'
       scope: punctuation.section.brackets.begin.man
       push:
         - match: '\]'
           scope: punctuation.section.brackets.end.man
           pop: true
         - include: expect-parameter
-    - match: '<'
-      scope: punctuation.definition.generic.begin.man
-    - match: '>'
-      scope: punctuation.definition.generic.end.man
-    - match: '$|(?=[],]|{{command_line_option}})'
+    - match: '$|(?=[],''" ]|{{command_line_option}})'
+      pop: true
+
+  expect-choices:
+    - match: '{{unquoted_value}}'
+      scope: string.unquoted
+    - match: '|'
+      scope: keyword.operator.man
+    - match: '\]'
+      scope: punctuation.section.brackets.end.man
+      pop: 1
+
+  expect-quoted-string:
+    - match: '"[^"]*"'
+      scope: string.quoted.double
+      pop: true
+    - match: "'[^']*'"
+      scope: string.quoted.single
       pop: true
 
   c-code:
