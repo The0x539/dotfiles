@@ -15,13 +15,16 @@ if set -q WT_SESSION
     end
 end
 
+# a subtler statusline for `less` (mostly expected to be used with man, I think?)
+set -x LESS_TERMCAP_so (set_color --background 44475a)
+set -x LESS_TERMCAP_se (printf '\e[0m')
+
 if test -f /etc/NIXOS
     # NixOS hack: the file named below checks whether certain programs exist,
     # but their paths aren't added to the environment until later in startup.
     # User conf.d is the earliest config location, while config.fish is the latest.
     source ~/.config/fish/conf.d/aliases.fish
 else
-    if which starship >/dev/null 2>/dev/null
-        starship init fish | source
-    end
+    type -q starship; and starship init fish | source
+    type -q batman; and batman --export-env | source
 end
